@@ -1,0 +1,50 @@
+/* for all */
+* {
+    margin: 0;
+    padding: 0;
+    /* box-sizing: border-box; */
+}
+
+body {
+    background-color: rgb(232, 247, 157);
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    padding: 50px;
+}
+
+h1 {
+    font-size: 35px;
+    padding-bottom: 25px;
+}
+
+h2 {
+    padding-bottom: 20px;
+    text-align: center;
+}
+
+p {
+    margin-bottom: 20px;
+}
+
+/* class */
+.first {
+    color: red;
+}
+
+/* id */
+#your-name {
+    background-color: rgb(255, 220, 105);
+    border: 5px solid #444;
+    width: 400px;
+    padding: 25px;
+    margin-top: 30px;
+}
+
+#your-name h2 {
+    color: olivedrab;
+}
+
+input, button {
+    padding: 10px;
+    font-size: 16px;
+}

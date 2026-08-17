@@ -362,3 +362,204 @@ element.addEventListener(event, function(e) {...});
 3. **arrow function** call: ```this = <this of surrounding function> (lexical this)```
 4.  **event listener**: ```this = <DOM element that handler is attached to>```
 5.  **new, call, apply, bind**, ...
+
+# Data Structures, Modern Operators
+
+## Destructuring Array
+
+```js
+const arr = [1, 2, 3];
+const [a, b, c] = arr;
+console.log(a); // 1
+console.log(b); // 2
+console.log(c); // 3
+
+const [firstE, secondE] = arr;
+console.log(firstE, secondE); // -> 1, 2
+```
+
+## Destructuring Object
+
+```js
+const anObj = {a: 1, b: 2, c: 3};
+const {a: anA, b: anB} = anObj;
+console.log(anA, anB); // -> 1, 2
+```
+
+## Spreading operator (...)
+
+```js
+const anArr = [1, 2, 3];
+const newArr = [...anArr, 4, 5]; // -> [1, 2, 3, 4, 5]
+```
+
+## Spreading operator on Left-hand side: Rest pattern
+
+> array
+
+```js
+const arr = [1, 2, 3, 4, 5];
+const [a, b, ...rest] = arr;
+console.log(a, b, rest); // -> 1, 2, [3, 4, 5]
+```
+
+> object
+
+```js
+const anObj = {
+    a: 1,
+    b: 2,
+    c: {
+        x: 'hello',
+        y: 'boo'
+    },
+    d: 'some string'
+};
+
+const {a, b, ...others} = anObj;
+console.log(a); // -> 1
+console.log(b); // -> 2
+console.log(others); // -> {c: {x: 'hello', y: 'boo'}, d:'some string'}
+```
+
+## Short Circuiting
+
+```js
+console.log(undefined || '' || null || 'hello' || 10); // -> 'hello' as it's the first non-falsy value in the chain
+```
+
+## Nullish Coalescing operator (??)
+
+> Nullish values are only undefined, null. Falsy values are still valid for selection
+```js
+const selection = someFunction(); // can be zero ... or Nullish
+const finalSelection = selection || 10; // not correct as if selection = 0, it's valid
+
+// Better
+const finalSelection = selection ?? 10; // -> takes value default 10 only when selection is null or undefined
+```
+
+## Optional chaining (?)
+
+```js
+const objA = {
+    a: {
+        b: 20,
+        c: 10
+    }
+}
+
+const objB = {
+    x: {
+        b: 20
+    }
+}
+
+const printObj = function(obj) {
+    console.log(obj.a.c);
+}
+
+printObj(objA); // OK
+printObj(objB); // error as a.c is undefined
+```
+
+> better to check if key exists
+
+```js
+const printObj = function(obj) {
+    console.log(obj.a?.c);
+}
+
+printObj(objB); // -> undefined
+```
+
+# A closer look at Functions
+
+## Default parameters
+
+```js
+const createBooking = function(
+    flightNum,
+    numPassengers = 1,
+    price = 199 * numPassengers
+) {
+    const booking = {
+        flightNum,
+        numPassengers,
+        price
+    };
+
+    console.log(booking);
+};
+
+createBooking('LH123'); // -> LH123, 1, 199
+createBooking('LH123', 2); // -> {flightNum: 'LH123', numPassengers: 2, price: 398}
+```
+
+## Argument by ref
+
+```js
+const anObj = {
+    a: 1,
+    b: 2
+}
+
+const someFunc = function(obj) {
+    obj.a = 'new val';
+}
+
+someFunc(anObj);
+console.log(anObj); // -> {a: 'new val', b: 2}
+```
+
+## First-class and Higher-Order functions
+
+> In JS, functions are first-class
+> - functions are just values
+> - functions are just a type of objects
+
+- can assign functions to variables
+- functions can be inputs of functions
+- functions can return functions
+
+
+### High-order functions
+
+> a high-order function receives functions as input and return new functions
+
+```js
+const decorated = function(func) {
+    return function() {
+        console.log(`Starting ${func.name} ==>`);
+        func();
+        console.log(`=> Ending ${func.name}`)
+    }
+}
+
+const decoratedHi = decorated(function() {
+    console.log('hello');
+});
+
+decoratedHi();
+```
+
+## Call, Apply & Bind
+
+## Immediate Invoke Function Expression (IIFE)
+
+```js
+(function() {
+    console.log('this function runs ONLY once, will not run again');
+})();
+
+(() => {
+    console.log('this function also will never run again');
+})();
+```
+
+## Closures
+
+- A function has access to the variable environment (VE) of the execution context in which it's created
+- Closure: VE attached to the function, exactly as it was at the time and place the function was created
+
+![Understanding Closures](images/clusure-understanding.png)

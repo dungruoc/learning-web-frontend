@@ -563,3 +563,14 @@ decoratedHi();
 - Closure: VE attached to the function, exactly as it was at the time and place the function was created
 
 ![Understanding Closures](images/clusure-understanding.png)
+
+# Numbers, Dates, Intl, Times
+
+```js
+console.log(10 === 10.0); // look nice
+console.log(0.1 + 0.2); // -> 0.30000000000000004: terrifying
+console.log(0.1 + 0.2 === 0.3); // -> false: much more terrifying
+```
+
+# Advanced DOM
+

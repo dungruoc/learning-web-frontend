@@ -46,3 +46,60 @@ console.log(logo.src);
 console.log(logo.designer);
 console.log(logo.getAttribute('designer'));
 logo.setAttribute('company', 'Bankist');
+
+const h1 = document.querySelector('h1');
+
+const h1Alert = function(e) {
+    alert("your are reading a heading");
+    h1.removeEventListener('mouseenter', h1Alert);
+};
+
+h1.addEventListener('mouseenter', h1Alert); // this will trigger only once
+
+h1.onmouseenter = function(e) {
+    alert("onmouseenter: your are reading a heading");
+}
+
+
+const randomInt = (min, max) => Math.floor(Math.random() * (max - min + 1) + min);
+const randomColor = () => `rgb(${randomInt(0, 255)},${randomInt(0, 255)},${randomInt(0, 255)})`;
+
+document.querySelector('.nav__link').addEventListener('click', function(e) {
+    console.log('.nav__link', e.target, e.currentTarget);
+    this.style.backgroundColor = randomColor();
+});
+
+document.querySelector('.nav__links').addEventListener('click', function(e) {
+    console.log('.nav__links', e.target, e.currentTarget);
+    this.style.backgroundColor = randomColor();
+});
+
+document.querySelector('.nav').addEventListener('click', function(e) {
+    console.log('.nav', e.target, e.currentTarget);
+    this.style.backgroundColor = randomColor();
+}, true); // capturing time, not bubbling
+
+
+// DOM traversing down-ward to children
+console.log(h1.querySelectorAll('.highlight'));
+console.log(h1.childNodes);
+console.log(h1.children);
+h1.firstElementChild.style.color = 'white';
+
+// up-ward to parents
+console.log(h1.parentNode);
+console.log(h1.parentElement);
+
+// closest element from the element to parents until found
+h1.closest('.header').style.background = 'var(--gradient-primary)';
+
+// side-ward
+console.log(h1.previousElementSibling);
+console.log(h1.nextElementSibling);
+console.log(h1.previousSibling);
+console.log(h1.nextSibling);
+
+console.log(h1.parentElement.children);
+[...h1.parentElement.children].forEach((el) => {
+    if (el !== h1) el.style.transform = 'scale(0.5';
+});

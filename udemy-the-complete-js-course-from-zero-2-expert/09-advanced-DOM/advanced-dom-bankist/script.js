@@ -119,3 +119,88 @@ const headerOpserver = new IntersectionObserver(obsCallback, {
     threshold: 0.1
 });
 headerOpserver.observe(headerContainer);
+
+const sections = document.querySelectorAll('.section');
+sections.forEach((sec) => sec.classList.add('section--hidden'));
+
+// Dynamic section reveal
+const revealSection = function(entries, observer) {
+    entries.forEach(ent => {
+        // console.log(ent, observer);
+        if (ent.isIntersecting)
+            ent.target.classList.remove('section--hidden');
+        else
+            ent.target.classList.add('section--hidden');
+    });
+};
+
+const sectionObserver = new IntersectionObserver(revealSection, {
+    root: null,
+    threshold: 0.25
+});
+
+sections.forEach((sec) => sectionObserver.observe(sec));
+
+// Lazy load
+
+const featureImages = sectionOne.querySelectorAll('.features__img');
+
+const lazyLoadImage = function(entries, observer) {
+    entries.forEach(ent => {
+        // console.log(ent, observer);
+        if (ent.isIntersecting) {
+            let imgSrc = ent.target.getAttribute('src').replace("-lazy", "");
+            ent.target.setAttribute('src', imgSrc);
+            ent.target.classList.remove('lazy-img');
+        } else {
+            // console.log(ent);
+            let imgSrc = ent.target.getAttribute('src');
+            if (!imgSrc.includes('-lazy')) {
+                // img/digital-lazy.jpg
+                imgSrc = imgSrc.slice(0,-4) + '-lazy' + imgSrc.slice(-4);
+                ent.target.setAttribute('src', imgSrc);
+            }
+            if (!ent.target.classList.contains('lazy-img')) ent.target.classList.add('lazy-img');
+        }
+    });
+};
+
+const featureObserver = new IntersectionObserver(lazyLoadImage, {
+    root: null,
+    threshold: 0.5
+});
+
+featureImages.forEach((image) => featureObserver.observe(image));
+
+const slides = document.querySelectorAll('.slide');
+const slidePositions = [0, 100, 200];
+slides.forEach((sl, i) => {
+    sl.style.transform = `translateX(${slidePositions[i]}%)`;
+});
+
+const btnSlideLeft = document.querySelector('.slider__btn--left');
+const btnSlideRight = document.querySelector('.slider__btn--right');
+
+const slideHandler = function(e) {
+    if (this === -1 && slidePositions[0] > -200 ||
+        this === 1 && slidePositions[0] < 0) {
+        for (let i = 0; i < 3; i++) {
+            slidePositions[i] += this * 100;
+        }
+        slides.forEach((sl, i) => {
+            sl.style.transform = `translateX(${slidePositions[i]}%)`;
+        });
+    }
+};
+
+btnSlideLeft.addEventListener('click', slideHandler.bind(-1));
+btnSlideRight.addEventListener('click', slideHandler.bind(1));
+
+document.addEventListener('keydown', function(e) {
+    // console.log(e);
+    if (e.key === 'ArrowRight') {
+        slideHandler.bind(-1)();
+    } else if (e.key === 'ArrowLeft') {
+        slideHandler.bind(1)();
+    }
+});

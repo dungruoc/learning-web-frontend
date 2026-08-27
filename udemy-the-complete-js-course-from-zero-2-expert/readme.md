@@ -576,3 +576,155 @@ console.log(0.1 + 0.2 === 0.3); // -> false: much more terrifying
 
 ## Event Propagation: Bubbling and capturing
 
+# Object Oriented Programming with JS
+
+Conventional OOP:
+- Classes are blueprints of objects
+- Objects are instances, instantiated from a class
+
+> In Javascript, OOP uses prototype objects.
+> - objects are linked to a prototype object
+> - the prototype object contains methods (behaviors) that are accessible to all objects linked to that prototype.
+
+## Constructor Functions
+
+```js
+const Person = function(...) {
+    ...
+}
+
+const aPerson = new Person(...);
+```
+```new``` operator does
+1. a new object ```{}``` is created
+2. the function is called with this attached to the object created ```{}```
+3. object ```{}``` is linked to the prototype (**every function has 1 prototype object**)
+4. the function automatically return the object ```{}```
+
+## Prototypal inheritance and Prototype Chain
+
+![Prototype Delegation](images/oop-prototype-delegation.png)
+
+![Prototype Chain](images/oop-prototype-chain.png)
+
+## ES6 Classes
+
+> From ES6, class is just a syntax sugar to write OOP as similar to other languages.
+> But under the hood, JS uses the constructor functions as above
+
+- Classes are not hoisted
+- Classes are first-class citizes
+- Classes are executed in strict mode
+
+### getters and setters
+
+```js
+class Person {
+    constructor(firstName, birthYear) {
+        this._firstName = firstName;
+        this._birthYear = birthYear;
+    }
+
+    get birthYear() {
+        return this._birthYear;
+    }
+
+    set birthYear(birthYear) {
+        this._birthYear = birthYear;
+    }
+}
+
+const person = new Person('John', 2000);
+console.log(person.birthYear);
+person.birthYear = 2001;
+
+```
+
+### static methods
+
+> Easy with constructor function
+
+```js
+const Person = function(firstName, birthYear) {
+    this.firstName = firstName;
+    this.birthYear = birthYear;
+}
+
+const john = new Person('John', 2000);
+
+// This function is not put into .prototype property of Person
+// and cannot be inherited by Person's object like john
+Person.sayHi = function() {
+    console.log("Hi!");
+}
+
+Person.sayHi();
+```
+
+> With ES6 Classes
+
+```js
+class Persion {
+    constructor(firstName, birthYear) {
+
+    }
+
+    static sayHi() {
+        console.log('Hi!');
+    }
+}
+```
+
+## Object.create
+
+```js
+const PrototypeObj = {
+    doSomething() {
+
+    }
+};
+
+const anInstance = Object.create(PrototypeObj);
+// anInstance.__proto__ will be pointed to object PrototypeObj
+// and anInstance can inherit methods from PrototypeObj
+```
+
+## Inheritance between classes
+
+### Constructor Functions
+
+```js
+const Person = function(firstName, birthYear) {
+    this.firstName = firstName;
+    this.birthYear = birthYear;
+};
+Person.prototype.calcAge = function() {
+    return new Date().getFullYear() - this.birthYear;
+};
+
+const Student = function(firstName, birthYear, course) {
+    Person.bind(this)(firstName, birthYear);
+    this.course = course;
+};
+// create inheritance chain
+Student.prototype = Object.create(Person.prototype);
+Student.prototype.constructor = Student;
+
+// new methods
+Student.prototype.introduce = function() {
+    console.log(`Hi! I am ${this.firstName}, and I study ${this.course}`);
+}
+
+const mike = new Student('Mike', 2003, 'CS');
+mike.calcAge(); // inherited method
+mike.introduce();
+```
+
+### Object.create
+
+## Encapsulation: private
+
+1. public fields
+2. private fields
+3. public methods
+4. private methods

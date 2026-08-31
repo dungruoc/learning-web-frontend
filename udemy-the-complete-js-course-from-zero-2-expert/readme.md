@@ -728,3 +728,72 @@ mike.introduce();
 2. private fields
 3. public methods
 4. private methods
+
+# Asynchronous Javascript, promises, async and Ajax
+
+## Event Loop
+
+> When the Web API finishes asynchronous run, it put the callback into the Callback queue, or promise (then) task into Microtask queue.
+
+
+1) when the Callstack is empty (except the global execution context), JS engine takes
+2) the first task in Microtask queue (related to Promises) if exists
+3) then the first taks in Callback queue if exists
+
+```js
+console.log('Test start'); // Main thread context
+setTimeout(() => console.log('0 sec timer'), 0); // Callback enqueues: () => console.log('0 sec timer')
+Promise.resolve('Resolve promise 1').then(res => console.log(res)); // Microtask enqueues: res => console.log(res)
+console.log('Test end'); // Main context
+```
+These codes would end-up
+```txt
+Test start
+Test end
+Resolve promise 1
+0 sec timer
+```
+
+## Promise race
+
+> Promise.race takes an array of Promise in concurrency and terminates with the first one to resolve or reject
+
+
+```js
+const timeout = function(sec) {
+    return new Promise(function(_, reject) {
+        setTimeout(function() {
+            reject(new Error('Execution too long'));
+        }, sec * 1000);
+    });
+}
+
+const fetchJson = async function(url) {
+    const res = await fetch(url);
+    if (!res.ok)
+        throw new Error(`Error with fetching ${url}`);
+    return await res.json();
+}
+
+Promise.race([
+    fetchJson('https://countries-api-836d.onrender.com/countries/alpha/FRA'),
+    timeout(0.1)
+]).
+then(data => console.log(data)).
+catch(err => console.error(`${err}`));
+```
+
+## Promise allSettled
+
+> Promise.allSettled takes an array of promises and output the array of results without short-cut
+
+```js
+Promise.allSettled([
+    timeout(0.1),
+    timeout(0.2),
+    timeout(0.3),
+    Promise.resolve('Success')
+]).
+then(res => console.log(res)).
+catch(err => console.error(`${err}`));
+```

@@ -797,3 +797,46 @@ Promise.allSettled([
 then(res => console.log(res)).
 catch(err => console.error(`${err}`));
 ```
+
+# Modern Javascript dev: modules, Tooling, Functional
+
+## Module pattern
+> Using IIFE with closures
+```js
+export const ShoppingCart2 = (function() {
+    const cart = [];
+
+    const addToCart = function(product, quantity) {
+        cart.push({product, quantity});
+        console.log(`${quantity} ${product} added to cart`);
+    }
+
+    const totalQuantity = function() {
+        return cart.reduce((acc, item) => acc + item.quantity, 0);
+    }
+
+    return {
+        addToCart,
+        totalQuantity
+    };
+})();
+
+/// importing
+
+import { ShoppingCart2 } from './shoppingCart2.js';
+
+ShoppingCart2.addToCart('beer', 2);
+ShoppingCart2.addToCart('wine', 1);
+console.log(ShoppingCart2.totalQuantity());
+```
+
+## Common JS
+
+## Work with NPM
+
+```bash
+> npm init
+...
+> npm install lodash-es
+```
+

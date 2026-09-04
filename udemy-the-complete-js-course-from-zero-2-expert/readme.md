@@ -840,3 +840,8 @@ console.log(ShoppingCart2.totalQuantity());
 > npm install lodash-es
 ```
 
+## Declarative & Functional JS
+
+> Functional Programming
+> - **Declarative** programming paradigm
+> - Writing programs by combining **pure functions** without **side-effects** and **mutating** data.

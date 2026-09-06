@@ -8,13 +8,15 @@ import {
     searchResults,
     getPageData,
     changeServings,
-    addBookmark
+    addBookmark,
+    loadState
 } from './model';
 import recipeView from './views/recipeView';
 import searchView from './views/searchView';
 import resultsView from './views/resultsView';
 import pagingView from './views/pagingView';
 import bookmarksView from './views/bookmarksView';
+import addRecipeForm from './views/addRecipeForm';
 
 const recipeChangeController = async function() {
     try {
@@ -77,6 +79,15 @@ const bookmarkController = function() {
     bookmarksView.update();
 }
 
+const loadPageController = function() {
+    loadState();
+    bookmarksView.render(state.bookmarks);
+}
+
+const addRecipeController = function(data) {
+    console.log(data);
+}
+
 const init = function() {
     recipeView.addHandlerRender(recipeChangeController);
     searchView.addHandlerSearch(searchController);
@@ -84,6 +95,8 @@ const init = function() {
     recipeView.addHandlerChangeServings(decreaseServingsController, increaseServingsController);
     recipeView.addHandlerBookmark(bookmarkController);
     bookmarksView.render(state.bookmarks);
+    window.addEventListener('load', loadPageController);
+    addRecipeForm.addHandlerSubmit(addRecipeController);
 };
 
 init();

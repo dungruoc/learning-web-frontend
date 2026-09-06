@@ -7,3 +7,4 @@ export const RECIPES_API_URL = 'https://forkify-api.jonas.io/api/v2';
 export const API_TIMEOUT_SECONDS = 3;
 export const RESULT_PAGE_SIZE = 10;
 export const MAX_SERVINGS = 20;
+export const BOOKMARK_LOCAL_KEY = 'recipeBookmarks';

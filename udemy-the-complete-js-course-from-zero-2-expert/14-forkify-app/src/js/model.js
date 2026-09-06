@@ -1,4 +1,10 @@
-import { RECIPES_API_URL, API_TIMEOUT_SECONDS, RESULT_PAGE_SIZE, MAX_SERVINGS } from "./config";
+import {
+    RECIPES_API_URL, 
+    API_TIMEOUT_SECONDS,
+    RESULT_PAGE_SIZE,
+    MAX_SERVINGS,
+    BOOKMARK_LOCAL_KEY
+} from "./config";
 import { fetchJson } from "./helpers";
 import { cloneDeep } from "lodash-es";
 
@@ -71,4 +77,12 @@ export const addBookmark = function() {
         state.recipe.bookmarked = false;
         delete state.bookmarks[state.recipe.id];
     }
+
+    console.log(state.bookmarks);
+    localStorage.setItem(BOOKMARK_LOCAL_KEY, JSON.stringify(state.bookmarks));
+}
+
+export const loadState = function() {
+    const storedBookmarks = JSON.parse(localStorage.getItem(BOOKMARK_LOCAL_KEY));
+    state.bookmarks = storedBookmarks ? storedBookmarks : {};
 }

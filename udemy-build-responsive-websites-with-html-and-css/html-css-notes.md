@@ -201,3 +201,36 @@ Priority resolving in the following order:
 
 ## Pseudo element
 
+```css
+.product::before {
+    ...
+}
+```
+
+# Layouts: Floats, Flexbox, CSS grid
+
+> 3 ways of building layouts
+
+1. Float Layout
+2. Flexbox
+3. CSS grid
+
+## Float layouts
+
+## Flexbox
+
+- flexbox is a set of CSS properties to build **1-dimensional layouts**.
+- principle: **empty space inside a container element can be automatically divided by its child elements**.
+
+![Flex box](images/flexbox.png)
+
+## CSS Grid
+
+![CSS Grid](images/css-grid.png)
+
+# Web design Rules & Frameworks
+
+## Typography
+
+> Make texts beautiful and easy to read
+

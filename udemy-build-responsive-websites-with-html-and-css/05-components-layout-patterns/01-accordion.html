@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    
+    <style>
+        /*
+        COLOR system:
+        https://yeun.github.io/open-color/#teal
+        - MAIN COLOR: #087f5b (TEAL 9)
+        - GREY COLOR: #343a40 (grey 8)
+        */
+        
+        /*
+        ICONS: https://heroicons.com/
+        */
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: "Inter", sans-serif;
+            color: #343a40;
+        }
+        
+        .accordion {
+            width: 700px;
+            margin: 100px auto;
+            /* background-color: #343a40; */
+            
+            display: flex;
+            flex-direction: column;
+            gap: 32px;
+        }
+
+        .accordion-item {
+            /* border-top: 4px solid #087f5b; */
+            padding: 24px;
+            box-shadow: 0 0 32px rgba(0, 0, 0, 0.1);
+            
+            display: grid;
+            grid-template-columns: auto 1fr auto;
+            column-gap: 24px;
+            row-gap: 32px;
+
+            align-content: center;
+            align-items: center;
+        }
+
+        .number, .title {
+            /* color: #087f5b; */
+            font-size: 24px;
+            font-weight: 500;
+        }
+
+        .number {
+            color: #868e96;
+        }
+
+        .icon {
+            width: 24px;
+            height: 24px;
+            stroke: #087f5b;
+        }
+        
+        .hidden-box {
+            grid-column: 2;
+            display: none;
+        }
+
+        .open-item {
+            border-top: 4px solid #087f5b;
+        }
+
+        .open-item .hidden-box {
+            display: block;
+        }
+
+        .open-item .number,
+        .open-item .title {
+            color: #087f5b;
+        }
+
+        .hidden-box p {
+            line-height: 1.6;
+            margin-bottom: 24px;
+        }
+
+        .hidden-box ul {
+            color: #868e96;
+            margin-left: 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+    </style>
+    
+    <title>Accordion Component</title>
+</head>
+<body>
+    <div class="accordion">
+        <div class="accordion-item">
+            <p class="number">01</p>
+            <p class="title">Where are these chair assembled?</p>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="icon">
+                <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+            </svg>
+            <div class="hidden-box">
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore sit qui, reprehenderit quas quam, neque ullam, nesciunt tempora unde omnis sed repudiandae. Numquam officiis quisquam minima architecto ipsam! Nesciunt, voluptate.
+                </p>
+                <ul>
+                    <li>
+                        Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                    </li>
+                    <li>
+                        At dolor accusamus libero reiciendis earum, autem tempore doloribus debitis soluta quo?
+                    </li>
+                    <li>
+                        Iure nesciunt ex, amet culpa pariatur magnam quos id doloribus.
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="accordion-item">
+            <p class="number">02</p>
+            <p class="title">How long do I have to return my chair?</p>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="icon">
+                <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+            </svg>
+            <div class="hidden-box">
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore sit qui, reprehenderit quas quam, neque ullam, nesciunt tempora unde omnis sed repudiandae. Numquam officiis quisquam minima architecto ipsam! Nesciunt, voluptate.
+                </p>
+                <ul>
+                    <li>
+                        Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                    </li>
+                    <li>
+                        At dolor accusamus libero reiciendis earum, autem tempore doloribus debitis soluta quo?
+                    </li>
+                    <li>
+                        Iure nesciunt ex, amet culpa pariatur magnam quos id doloribus.
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="accordion-item open-item">
+            <p class="number">03</p>
+            <p class="title">Do you ship to non EU countries?</p>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="icon">
+                <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+            </svg>
+            <div class="hidden-box">
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore sit qui, reprehenderit quas quam, neque ullam, nesciunt tempora unde omnis sed repudiandae. Numquam officiis quisquam minima architecto ipsam! Nesciunt, voluptate.
+                </p>
+                <ul>
+                    <li>
+                        Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                    </li>
+                    <li>
+                        At dolor accusamus libero reiciendis earum, autem tempore doloribus debitis soluta quo?
+                    </li>
+                    <li>
+                        Iure nesciunt ex, amet culpa pariatur magnam quos id doloribus.
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

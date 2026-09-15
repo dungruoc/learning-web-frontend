@@ -230,7 +230,38 @@ Priority resolving in the following order:
 
 # Web design Rules & Frameworks
 
+![Personalities Framework](images/personalities-framework.png)
+
 ## Typography
 
 > Make texts beautiful and easy to read
 
+## Colors
+
+![Color system](images/color-system.png)
+
+- use main color to draw attention to the most important elements (e.g. buttons)
+- use colors to add interesting accents or make entire components or sections stand out
+
+
+# Components and Layout Patterns
+
+> Elements -> Components -> Layouts -> Pages
+
+## Elements
+- Texts
+- Buttons
+- Images
+- Input elements: drop-down, input texts, radio, ...
+- Tags
+
+## Components
+
+- Breadcrumbs: A > B > C ...
+- Pagination
+- Alert and status bars
+- Statistics
+- Galeries
+- Feature boxes
+- Preview and Profile cards
+- 

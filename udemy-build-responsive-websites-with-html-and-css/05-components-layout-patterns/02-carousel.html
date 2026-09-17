@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    
+    <style>
+        /*
+        COLOR system:
+        https://yeun.github.io/open-color/#teal
+        - MAIN COLOR: #087f5b (TEAL 9)
+        - GREY COLOR: #343a40 (grey 8)
+        */
+        
+        /*
+        ICONS: https://heroicons.com/
+        */
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: "Inter", sans-serif;
+            color: #343a40;
+            line-height: 1;
+        }
+        
+        .carousel {
+            background-color: #087f5b;
+            width: 800px;
+            margin: 100px auto;
+            /* padding: 32px; */
+            border-radius: 8px;
+            padding: 32px 48px 32px 86px;
+
+            display: flex;
+            align-items: center;
+            gap: 64px;
+
+            position: relative;
+        }
+        
+        img {
+            height: 200px;
+            width: auto;
+            border-radius: 8px;
+            transform: scale(1.6);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.25);
+        }
+
+        .testimonial {
+            padding-left: 32px;
+            /* padding: 32px 48px 32px 86px; */
+        }
+
+        .testimonial-text {
+            color: #e6fcf5;
+            font-size: 18px;
+            font-weight: 500;
+            line-height: 1.5;
+            margin-bottom: 32px;
+        }
+
+        .testimonial-author {
+            color: #c3fae8;
+            font-size: 14px;
+            margin-bottom: 4px;
+        }
+
+        .testimonial-job {
+            color: #63e6be;
+            font-size: 12px;
+        }
+
+        .btn {
+            background-color: #fff;
+            border-radius: 50%;
+            border: none;
+            height: 40px;
+            width: 40px;
+
+            position: absolute;
+            top: 50%;
+            /* transform: translate(0, -50%); */
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.25);
+            cursor: pointer;
+        }
+        
+        .btn--left {
+            left: 0px;
+            transform: translate(-50%, -50%);
+        }
+
+        .btn--right {
+            right: 0;
+            transform: translate(50%, -50%);
+        }
+
+        .btn-icon {
+            width: 24px;
+            height: 24px;
+        }
+
+        .dots {
+            position: absolute;
+            left: 50%;
+            bottom: 0;
+            transform: translate(-50%, 32px);
+
+            display: flex;
+            gap: 12px;
+        }
+
+        .dot {
+            height: 12px;
+            width: 12px;
+            background-color: #fff;
+            border: 2px solid #087f5b;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        .dot--fill {
+            background-color: #087f5b;
+        }
+
+    </style>
+    
+    <title>Carousel Component</title>
+</head>
+<body>
+    <div class="carousel">
+        <img src="maria.jpg" alt="Maria" />
+        <blockquote class="testimonial">
+            <p class="testimonial-text">
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sequi doloremque voluptates nisi error voluptate, officiis, dicta maiores obcaecati voluptatum vel, quas expedita incidunt tenetur eius dolorem excepturi repudiandae officia beatae?
+            </p>
+            <p class="testimonial-author">Maria de Almeida</p>
+            <p class="testimonial-job">Senior Product Manager at EDP.</p>
+        </blockquote>
+        <button class="btn btn--left">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="btn-icon">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
+            </svg>
+        </button>
+        <button class="btn btn--right">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="btn-icon">
+                <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+            </svg>
+        </button>
+        <div class="dots">
+            <button class="dot">&nbsp;</button>
+            <button class="dot">&nbsp;</button>
+            <button class="dot dot--fill">&nbsp;</button>
+            <button class="dot">&nbsp;</button>
+        </div>
+    </div>
+</body>
+</html>

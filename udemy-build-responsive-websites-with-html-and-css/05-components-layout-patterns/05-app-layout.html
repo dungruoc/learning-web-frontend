@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Application Layout</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: sans-serif;
+            color: #343a40;
+            font-size: 24px;
+
+            /* text-align: center; */
+            font-weight: bold;
+
+            display: grid;
+
+            grid-template-columns: 80px 400px 1fr 250px;
+            grid-template-rows: 80px 1fr;
+            height: 100vh;
+        }
+
+        nav {
+            background-color: #343a40;
+            color: #fff;
+
+            grid-row: 1 / -1;
+        }
+
+        menu {
+            background-color: #1098ad;
+            grid-column: 2 / -1;
+
+            align-items: center;
+            gap: 12px;
+
+            display: flex;
+            justify-content: space-between;
+            padding: 0 40px;
+        }
+
+        button {
+            background-color: #1971c2;
+            color: #fff;
+            border: none;
+            font-size: 16px;
+            font-weight: bold;
+            padding: 8px 12px;
+            cursor: pointer;
+            display: inline-block;
+        }
+
+        button:last-child {
+            background-color: #d6336c;
+            margin-left: auto;
+        }
+
+        section {
+            background-color: #99e9f2;
+            padding: 40px;
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+
+            overflow: scroll;
+        }
+
+        .inbox-email {
+            background-color: #adb5bd;
+            width: 300px;
+            height: 100px;
+            flex-shrink: 0;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        main {
+            background-color: #f1f3f5;
+        }
+
+        aside {
+            background-color: #99e9f2;
+        }
+
+    </style>
+</head>
+<body>
+    <nav>
+        Nav
+    </nav>
+    <menu>
+        <button>New</button>
+        <button>Reply</button>
+        <button>Forward</button>
+        <button>Mark Unread</button>
+        <button>Trash</button>
+    </menu>
+    <section>
+        <div class="inbox-email">Email 1</div>
+        <div class="inbox-email">Email 2</div>
+        <div class="inbox-email">Email 3</div>
+        <div class="inbox-email">Email 4</div>
+        <div class="inbox-email">Email 5</div>
+        <div class="inbox-email">Email 6</div>
+        <div class="inbox-email">Email 7</div>
+        <div class="inbox-email">Email 8</div>
+        <div class="inbox-email">Email 9</div>
+        <div class="inbox-email">Email 10</div>
+        <div class="inbox-email">Email 11</div>
+    </section>
+    <main>
+        Main
+    </main>
+    <aside>
+        Additional info
+    </aside>
+</body>
+</html>

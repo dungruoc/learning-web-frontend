@@ -463,3 +463,169 @@
     font-size: 1.8rem;
     line-height: 1.8;
 }
+
+/* ****************************************************** */
+/* PRICING SECTION */
+/* ****************************************************** */
+
+.section-cta {
+    /* top horizontal bottom */
+    margin: 4.8rem 0 12.8rem;
+}
+
+.cta {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    box-shadow: 0 2.4rem 4.8rem rgba(0, 0, 0, 0.15);
+    border-radius: 1.1rem;
+    background-image: linear-gradient(to right bottom, #eb984e, #e67e22);
+    overflow: hidden;
+
+    height: 50rem;
+}
+
+.cta-text-box {
+    color: #45260a;
+    padding: 4.8rem 6.4rem;
+}
+
+.cta .heading-secondary {
+    /* color: #45260a; */
+    color: inherit;
+    margin-bottom: 3.2rem;
+}
+
+.cta-text {
+    font-size: 1.8rem;
+    line-height: 1.8;
+    margin-bottom: 4.8rem;
+}
+
+.cta-form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 3.2rem;
+    row-gap: 1.6rem;
+    align-items: end;
+}
+
+.cta-form label {
+    display: block;
+    font-size: 1.6rem;
+    font-weight: 500;
+    margin-bottom: 1.2rem;
+}
+
+.cta-form input,
+.cta-form select {
+    width: 100%;
+    padding: 1.2rem;
+    font-size: 1.8rem;
+    font-family: inherit;
+    color: inherit;
+    background-color: #fdf2e9;
+    border: none;
+    border-radius: 0.9rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.cta-form input::placeholder {
+    color: #aaa;
+}
+
+.cta *:focus {
+    outline: none;
+    box-shadow: 0 0 0 0.8rem rgba(255, 255, 255, 0.5);
+}
+
+.cta-img-box {
+    background-image: linear-gradient(to right bottom, rgba(235, 152, 78, 0.35), rgba(230, 125, 34, 0.35)), url("../img/eating.jpg");
+    background-size: cover;
+    background-position: center;
+}
+
+/* ****************************************************** */
+/* FOOTER */
+/* ****************************************************** */
+
+
+.footer {
+    padding: 12.8rem 0;
+    border-top: 1px solid #ddd;
+}
+
+.grid--footer {
+    grid-template-columns: 1.5fr 1.5fr 1fr 1fr 1fr;
+}
+
+.logo-col {
+    display: flex;
+    flex-direction: column;
+}
+
+.footer-logo {
+    display: block;
+    margin-bottom: 3.2rem;
+}
+
+.footer-heading {
+    font-size: 1.8rem;
+    font-weight: 500;
+    margin-bottom: 4rem;
+}
+
+.social-links {
+    list-style: none;
+    display: flex;
+    gap: 2.4rem;
+}
+
+.social-icon {
+    width: 2.4rem;
+    height: 2.4rem;
+}
+
+.copyright {
+    font-size: 1.6rem;
+    line-height: 1.6;
+    color: #767676;
+    margin-top: auto;
+}
+
+.address-col {
+    display: flex;
+    flex-direction: column;
+}
+
+.contact {
+    font-style: normal;
+    font-size: 1.6rem;
+    line-height: 1.6;
+    margin-top: auto;
+}
+
+.address {
+    margin-bottom: 2.4rem;
+}
+
+.footer-nav {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 2.4rem;
+}
+
+.footer-link:link,
+.footer-link:visited {
+    text-decoration: none;
+    font-size: 1.6rem;
+    line-height: 1.6;
+    color: #767676;
+
+    transition: all 0.3s;
+}
+
+.footer-link:hover,
+.footer-link:active {
+    color: #555;
+}

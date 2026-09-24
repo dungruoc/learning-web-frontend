@@ -265,3 +265,19 @@ Priority resolving in the following order:
 - Feature boxes
 - Preview and Profile cards
 - 
+
+# Resources
+
+## Fonts
+
+[https://fonts.google.com/](https://fonts.google.com/)
+
+## Colors
+
+[https://yeun.github.io/open-color/](https://yeun.github.io/open-color)
+[https://maketintsandshades.com](https://maketintsandshades.com)
+
+## Icons
+
+[https://heroicons.com/](https://heroicons.com/)
+[https://ionic.io/ionicons](https://ionic.io/ionicons)

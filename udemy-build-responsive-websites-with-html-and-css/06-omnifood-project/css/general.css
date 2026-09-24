@@ -18,8 +18,8 @@
 
 - PRIMARY COLOR: #e67e22
 
-- Tints: #fdf2e9, #fae5d3
-- Shades: #cf711f
+- Tints: #fdf2e9, #fae5d3, #eb984e
+- Shades: #cf711f, #45260a
 - Accents:
 
 - Greys:
@@ -40,6 +40,12 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}
+
+*:focus {
+    outline: none;
+    /* outline: 4px dotted #e67e22; */
+    box-shadow: 0 0 0 0.8rem rgba(230, 125, 34, 0.5);
 }
 
 html {
@@ -92,17 +98,20 @@ body {
     justify-items: center;
 }
 
-
-.grid--2--cols {
+.grid--2-cols {
     grid-template-columns: repeat(2, 1fr);
 }
 
-.grid--3--cols {
+.grid--3-cols {
     grid-template-columns: repeat(3, 1fr);
 }
 
-.grid--4--cols {
+.grid--4-cols {
     grid-template-columns: repeat(4, 1fr);
+}
+
+.grid--5-cols {
+    grid-template-columns: repeat(5, 1fr);
 }
 
 .heading-primary,
@@ -140,6 +149,7 @@ body {
     letter-spacing: 0.75px;
 }
 
+.btn,
 .btn:link,
 .btn:visited {
     display: inline-block;
@@ -149,12 +159,16 @@ body {
     padding: 1.6rem 3.2rem;
     border-radius: 0.9rem;
 
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+
     transition: all 0.3s;
 }
 
 .btn:hover,
 .btn:active {
-    text-decoration: underline;
+    /* text-decoration: underline; */
     cursor: pointer;
 }
 
@@ -179,6 +193,17 @@ body {
 .btn--outline:active {
     background-color: #fdf2e9;
     box-shadow: inset 0 0 0 3px #fff;
+}
+
+.btn--form {
+    background-color: #45260a;
+    color: #fdf2e9;
+    padding: 1.2rem;
+}
+
+.btn--form:hover {
+    background-color: #fff;
+    color: #555;
 }
 
 .link:link,

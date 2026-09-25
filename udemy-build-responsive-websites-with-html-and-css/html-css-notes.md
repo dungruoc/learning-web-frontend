@@ -264,7 +264,10 @@ Priority resolving in the following order:
 - Galeries
 - Feature boxes
 - Preview and Profile cards
-- 
+
+# Responsive Web
+
+![Responsive Breakpoints](images/responsive-breakpoints.png)
 
 # Resources
 

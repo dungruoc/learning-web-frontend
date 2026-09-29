@@ -30,4 +30,4 @@
 
 # State, Events, Forms: Interactive components
 
-
+> UI is a function of state

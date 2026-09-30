@@ -31,3 +31,7 @@
 # State, Events, Forms: Interactive components
 
 > UI is a function of state
+
+# Thinking in React - State management
+
+

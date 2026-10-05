@@ -47,7 +47,7 @@ export default function App() {
     <div className="app">
       <SideBar friendList={friendList} selectedId={selectedId}
         addNewFriendHdl={addNewFriendHdl} onSelectFriendHdl={id => handleSelectFriend(id)}/>
-      {selectedFriend && <FormSplitBill selectedFriend={selectedFriend} splitHndl={handleSplit} closeSplitForm={() => setSelectedId(-1)} />}
+      {selectedFriend && <FormSplitBill key={selectedFriend.id} selectedFriend={selectedFriend} splitHndl={handleSplit} closeSplitForm={() => setSelectedId(-1)} />}
     </div>
   );
 }

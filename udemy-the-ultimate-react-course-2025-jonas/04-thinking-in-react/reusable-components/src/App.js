@@ -23,7 +23,7 @@ export default function App() {
                     collasedNumChars={50}
                     expandButtonText='Show more'
                     collaseButtonText='Show less'
-                    buttonColor='red'
+                    buttonColor='orange'
                 >
                     Lorem ipsum dolor, sit amet consectetur adipisicing elit. At temporibus quis fuga quaerat officiis. Rerum maiores amet ex repudiandae. Totam delectus, molestiae vero eligendi commodi perspiciatis corporis eos inventore recusandae. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolore animi libero consectetur quia reiciendis id repudiandae fugiat illo alias, accusantium tempora assumenda neque ipsam vitae rerum ex mollitia deleniti earum?
                 </TextExpander>

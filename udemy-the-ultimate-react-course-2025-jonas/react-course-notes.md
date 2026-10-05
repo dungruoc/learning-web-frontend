@@ -34,4 +34,6 @@
 
 # Thinking in React - State management
 
+# How React works
 
+![How React works](./images/how-react-works.png)

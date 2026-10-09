@@ -291,8 +291,14 @@ body {
   gap: 2.4rem;
 }
 
-.btn-add {
-  background-color: var(--color-primary);
+.actions {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  text-align: center;
+}
+
+.btn-action {
   color: var(--color-text);
   border: none;
   border-radius: 10rem;
@@ -303,8 +309,20 @@ body {
   transition: all 0.3s;
 }
 
+.btn-add {
+  background-color: var(--color-primary);
+}
+
 .btn-add:hover {
   background-color: var(--color-primary-light);
+}
+
+.btn-remove {
+  background-color: var(--color-red-dark);
+}
+
+.btn-remove:hover {
+  background-color: var(--color-red);
 }
 
 .seconds {

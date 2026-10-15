@@ -1,17 +1,42 @@
 import { useParams } from "react-router-dom";
-import { formatDate } from "../../data/tools";
+import { fetchCityDetails, formatDate } from "../../data/tools";
 import styles from "./City.module.css";
+import { useEffect } from "react";
+import { useCities } from "../contexts/CitiesContext";
+import Spinner from "./Spinner";
+import ButtonBack from "./ButtonBack";
 
 export default function City() {
     const {id} = useParams();
-    console.log(id);
+    const {status, currentCity, dispatch, currentCityId} = useCities();
 
-    const currentCity = {
-        cityName: "Lisbon",
-        emoji: "🇵🇹",
-        date: "2027-10-31T15:59:59.138Z",
-        notes: "My favorite city so far!",
-    };
+    console.log(id, status, currentCity);
+
+    useEffect(() => {
+        async function fetCurrentCity(id) {
+            console.log(id, currentCityId);
+            if (Number(id) === Number(currentCityId))
+                return;
+            dispatch({type: 'fetching_city'});
+            try {
+                const city = await fetchCityDetails(id);
+                dispatch({type: 'city_fetched', payload: city});
+            } catch (err) {
+                dispatch({type: 'error', payload: err.message});
+            }
+        }
+        fetCurrentCity(id);
+    }, [dispatch, id, currentCityId]);
+
+    // const currentCity = {
+    //     cityName: "Lisbon",
+    //     emoji: "🇵🇹",
+    //     date: "2027-10-31T15:59:59.138Z",
+    //     notes: "My favorite city so far!",
+    // };
+
+    if (status === 'loading' || !currentCity)
+        return <Spinner />;
 
     const { cityName, emoji, date, notes } = currentCity;
     return (
@@ -47,7 +72,7 @@ export default function City() {
             </div>
 
             <div>
-                {/* <ButtonBack /> */}
+                <ButtonBack />
             </div>
         </div>
     )

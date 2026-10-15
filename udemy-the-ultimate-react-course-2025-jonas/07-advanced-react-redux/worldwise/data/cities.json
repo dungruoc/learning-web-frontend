@@ -1,40 +1,88 @@
 {
   "cities": [
     {
-      "cityName": "Lisbon",
-      "country": "Portugal",
-      "emoji": "🇵🇹",
-      "date": "2027-10-31T15:59:59.138Z",
-      "notes": "My favorite city so far!",
-      "position": {
-        "lat": 38.727881642324164,
-        "lng": -9.140900099907554
-      },
-      "id": 73930385
-    },
-    {
-      "cityName": "Madrid",
-      "country": "Spain",
-      "emoji": "🇪🇸",
-      "date": "2027-07-15T08:22:53.976Z",
+      "cityName": "Saint-Laurent-du-Var",
+      "emoji": "🇫🇷",
+      "country": "France",
+      "date": "2026-10-15T16:38:31.623Z",
       "notes": "",
       "position": {
-        "lat": 40.46635901755316,
-        "lng": -3.7133789062500004
+        "lat": "43.667871610117494",
+        "lng": "7.189865112304688"
       },
-      "id": 17806751
+      "id": 3139661
     },
     {
-      "cityName": "Berlin",
-      "country": "Germany",
-      "emoji": "🇩🇪",
-      "date": "2027-02-12T09:24:11.863Z",
-      "notes": "Amazing 😃",
+      "cityName": "Hanoi",
+      "emoji": "🇻🇳",
+      "country": "Viet Nam",
+      "date": "2026-10-15T16:38:31.623Z",
+      "notes": "",
       "position": {
-        "lat": 52.53586782505711,
-        "lng": 13.376933665713324
+        "lat": "21.02682813712425",
+        "lng": "105.85327148437501"
       },
-      "id": 98443197
+      "id": 22257585
+    },
+    {
+      "cityName": "Nice",
+      "emoji": "🇫🇷",
+      "country": "France",
+      "date": "2026-10-15T16:38:31.623Z",
+      "notes": "",
+      "position": {
+        "lat": "43.700644071512485",
+        "lng": "7.271575927734375"
+      },
+      "id": 3177725
+    },
+    {
+      "cityName": "Monaco",
+      "emoji": "🇲🇨",
+      "country": "Monaco",
+      "date": "2026-10-15T16:38:31.623Z",
+      "notes": "",
+      "position": {
+        "lat": "43.72942933300513",
+        "lng": "7.417144775390626"
+      },
+      "id": 3243475
+    },
+    {
+      "cityName": "Phuong Bai Chay",
+      "emoji": "🇻🇳",
+      "country": "Viet Nam",
+      "date": "2026-10-15T16:38:31.623Z",
+      "notes": "",
+      "position": {
+        "lat": "20.951580773591807",
+        "lng": "107.04640388488771"
+      },
+      "id": 22427913
+    },
+    {
+      "cityName": "Haiphong",
+      "emoji": "🇻🇳",
+      "country": "Viet Nam",
+      "date": "2026-10-15T16:38:31.623Z",
+      "notes": "",
+      "position": {
+        "lat": "20.86635090978079",
+        "lng": "106.69097900390626"
+      },
+      "id": 22262514
+    },
+    {
+      "cityName": "Tokyo",
+      "emoji": "🇯🇵",
+      "country": "Japan",
+      "date": "2026-10-15T16:38:31.623Z",
+      "notes": "",
+      "position": {
+        "lat": "35.67514743608467",
+        "lng": "139.79003906250003"
+      },
+      "id": 49870302
     }
   ]
 }

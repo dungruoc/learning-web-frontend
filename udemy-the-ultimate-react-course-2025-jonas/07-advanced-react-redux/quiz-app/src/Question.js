@@ -1,18 +1,20 @@
-export default function Question({quiz, dispatch}) {
-    console.log(quiz);
+import { useQuiz } from "./QuizContext"
+
+export default function Question() {
+    const {currentQuestion, dispatch} = useQuiz();
 
     return (
         <div>
-            <h4>{quiz.question}</h4>
+            <h4>{currentQuestion.question}</h4>
             <div className="options">
-                {quiz.options.map((opt, idx) => (
+                {currentQuestion.options.map((opt, idx) => (
                     <button
-                        disabled={quiz.answer !== undefined}
+                        disabled={currentQuestion.answer !== undefined}
                     
                         className={`btn btn-option
-                        ${quiz.answer === idx ? 'answer' : null}
-                        ${quiz.answer !== undefined && quiz.correctOption === idx ? 'correct' :
-                            (quiz.answer !== undefined ? 'wrong' : null)
+                        ${currentQuestion.answer === idx ? 'answer' : null}
+                        ${currentQuestion.answer !== undefined && currentQuestion.correctOption === idx ? 'correct' :
+                            (currentQuestion.answer !== undefined ? 'wrong' : null)
                         }
                         `}
                         key={opt} onClick={() => dispatch({type: 'answer', payload: idx})}

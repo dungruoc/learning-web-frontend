@@ -1,4 +1,7 @@
-export default function StartContainer({numQuestions, children}) {
+import { useQuiz } from "./QuizContext";
+
+export default function StartContainer({children}) {
+    const {numQuestions} = useQuiz();
 
     return (
         <div className="start">

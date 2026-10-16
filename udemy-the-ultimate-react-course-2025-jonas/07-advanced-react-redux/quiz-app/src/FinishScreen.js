@@ -1,6 +1,8 @@
+import { useQuiz } from "./QuizContext";
 import UiButton from "./UiButton";
 
-export default function FinishScreen({scores, maxScores,  highestScore, dispatch}) {
+export default function FinishScreen() {
+    const {scores, maxScores,  highestScore} = useQuiz();
 
     const pct = 100 * scores / maxScores;
 
@@ -18,7 +20,7 @@ export default function FinishScreen({scores, maxScores,  highestScore, dispatch
                 <span>{emoj}</span> Your scored <strong>{scores}</strong> out of {maxScores} ({Math.ceil(pct)}%)
             </p>
             <p className="highscore">Highest score: {highestScore}</p>
-            <UiButton dispatch={dispatch} action={'start'}>
+            <UiButton action={'start'}>
                 Restart Quiz
             </UiButton>
         </>

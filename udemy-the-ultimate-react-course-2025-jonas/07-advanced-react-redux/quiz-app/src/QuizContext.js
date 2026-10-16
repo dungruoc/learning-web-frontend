@@ -1,6 +1,8 @@
-import { useEffect, useReducer } from "react";
+import { createContext, useContext, useEffect, useReducer } from "react";
 
 export const MAX_TIME_S = 60 * 10;
+
+const QuizContext = createContext();
 
 const initialState = {
   status: 'init',
@@ -49,11 +51,10 @@ function reduser(state, action) {
   return reducers[action.type](state, action);
 }
 
-export function useAppState() {
-    return useReducer(reduser, initialState);
-}
 
-export function useQuestions(dispatch) {
+export function QuizProvider({children}) {
+  const [state, dispatch] = useReducer(reduser, initialState)
+
   useEffect(() => {
     async function fetchData() {
       try {
@@ -79,9 +80,40 @@ export function useQuestions(dispatch) {
 
     fetchData();
   }, [dispatch]);
+
+  const numQuestions = state.questions.length;
+  const numAnswers = state.questions.filter(q => q?.answer !== undefined).length;
+  const currentQuestion = state.questions.at(state.index);
+  const correctQuetions = state.questions.filter(q => q?.answer === q.correctOption);
+  const scores = calcScores(correctQuetions);
+  const maxScores = calcScores(state.questions);
+
+  return (
+    <QuizContext.Provider
+      value={{
+        ...state,
+        numQuestions,
+        numAnswers,
+        currentQuestion,
+        correctQuetions,
+        scores,
+        maxScores,
+        dispatch
+      }}
+    >
+      {children}
+    </QuizContext.Provider>
+  )
+}
+
+function calcScores(questions) {
+  return questions.map(q => Number(q.points)).reduce((a, b) => a + b, 0);
 }
 
 
-export function calcScores(questions) {
-  return questions.map(q => Number(q.points)).reduce((a, b) => a + b, 0);
+export function useQuiz() {
+  const context = useContext(QuizContext);
+  if (!context)
+    throw new Error('QuizContext is used outside of provider');
+  return context;
 }

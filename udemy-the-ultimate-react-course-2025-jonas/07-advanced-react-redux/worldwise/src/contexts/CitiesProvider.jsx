@@ -1,7 +1,9 @@
-import { useEffect } from "react";
+// import { useEffect } from "react";
 import { useReducer } from "react";
 import { CitiesContext } from "./CitiesContext";
 import { fetchCities } from "../../data/tools";
+import { useEffect } from "react";
+import { useAuth } from "./AuthContext";
 
 const initialState = {
   cities: [],
@@ -13,23 +15,24 @@ const initialState = {
 
 function stateReducer(state, action) {
   const reducerFuncs = {
-    'fetching_cities': (st, ) => ({...st, cities: [], errorMessage: null, status: 'loading'}),
-    'cities_fetched': (st, act) => ({...st, cities: act.payload, status: 'loaded'}),
-    'error': (st, act) => ({...st, errorMessage: act.payload}),
-    'delete_city': (st, act) => ({...st, cities: st.cities.filter(city => city.id !== act.payload)}),
-    'fetching_city': (st, ) => ({...st, currentCity: null, errorMessage: null, state: 'loading'}),
-    'city_fetched': (st, act) => ({...st, currentCity: act.payload, status: 'loaded'}),
-    'city_added': (st, act) => ({...st, cities: [...st.cities, act.payload]})
+    'cities/fetching': (st, ) => ({...st, cities: [], errorMessage: null, status: 'loading'}),
+    'cities/fetched': (st, act) => ({...st, cities: act.payload, status: 'loaded'}),
+    'error': (st, act) => ({...st, errorMessage: act.payload, status: 'server_error'}),
+    'city/deleted': (st, act) => ({...st, cities: st.cities.filter(city => city.id !== act.payload)}),
+    'city/fetching': (st, ) => ({...st, currentCity: null, errorMessage: null, status: 'loading'}),
+    'city/fetched': (st, act) => ({...st, currentCity: act.payload, status: 'loaded'}),
+    'city/added': (st, act) => ({...st, cities: [...st.cities, act.payload]})
   }
 
   const newState = reducerFuncs[action.type](state, action);
-  console.log(action, `${state} => ${newState}`);
+  console.log(action);
+  console.log(newState);
 
   return newState;
 }
 
 export default function CitiesProvider({children}) {
-
+    const {user} = useAuth();
     const [state, dispatch] = useReducer(stateReducer, initialState);
     const countries = state.cities.
       map(c => ({name: c.country, flag: c.emoji})).
@@ -39,19 +42,20 @@ export default function CitiesProvider({children}) {
 
     const currentCityId = state.currentCity?.id;
 
+
     useEffect(() => {
-        const fetchData = async function() {
-          dispatch({type: 'fetching_cities'});
+        const fetchData = async function(user) {
+          dispatch({type: 'cities/fetching'});
           try {
-              const cities = await fetchCities();
-              dispatch({type: 'cities_fetched', payload: cities});
+              const cities = await fetchCities(user.email);
+              dispatch({type: 'cities/fetched', payload: cities});
           } catch (err) {
               dispatch({type: 'error', payload: err.message});
           }
         }
 
-        fetchData();
-    }, [dispatch]);
+        fetchData(user);
+    }, [dispatch, user]);
         
     return (
         <CitiesContext.Provider

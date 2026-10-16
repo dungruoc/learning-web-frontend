@@ -29,8 +29,10 @@ async function fetchJson(url) {
   return null;
 }
 
-export async function fetchCities() {
-  return await fetchJson('http://localhost:5174/cities');
+export async function fetchCities(user) {
+  const data = await fetchJson('http://localhost:5174/cities');
+  console.log(data, user);
+  return data.filter(c => c.user === user);
 }
 
 export async function fetchCityDetails(cityId) {

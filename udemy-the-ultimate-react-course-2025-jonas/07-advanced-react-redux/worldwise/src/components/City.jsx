@@ -5,22 +5,21 @@ import { useEffect } from "react";
 import { useCities } from "../contexts/CitiesContext";
 import Spinner from "./Spinner";
 import ButtonBack from "./ButtonBack";
+import Message from "./Message";
 
 export default function City() {
     const {id} = useParams();
-    const {status, currentCity, dispatch, currentCityId} = useCities();
-
-    console.log(id, status, currentCity);
+    const {status, currentCity, dispatch, currentCityId, errorMessage} = useCities();
 
     useEffect(() => {
         async function fetCurrentCity(id) {
             console.log(id, currentCityId);
             if (Number(id) === Number(currentCityId))
                 return;
-            dispatch({type: 'fetching_city'});
+            dispatch({type: 'city/fetching'});
             try {
                 const city = await fetchCityDetails(id);
-                dispatch({type: 'city_fetched', payload: city});
+                dispatch({type: 'city/fetched', payload: city});
             } catch (err) {
                 dispatch({type: 'error', payload: err.message});
             }
@@ -34,9 +33,12 @@ export default function City() {
     //     date: "2027-10-31T15:59:59.138Z",
     //     notes: "My favorite city so far!",
     // };
+    if (status === 'server_error')
+        return <Message message={errorMessage} />
 
     if (status === 'loading' || !currentCity)
         return <Spinner />;
+
 
     const { cityName, emoji, date, notes } = currentCity;
     return (

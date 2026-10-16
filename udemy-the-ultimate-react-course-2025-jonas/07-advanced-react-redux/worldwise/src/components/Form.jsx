@@ -11,6 +11,7 @@ import Spinner from "./Spinner";
 import Message from "./Message";
 import { useCities } from "../contexts/CitiesContext";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../contexts/AuthContext";
 
 const initState = {
     isLoading: false,
@@ -23,7 +24,7 @@ const initState = {
 }
 
 export default function Form() {
-
+    const {user} = useAuth();
     const [lat, lng] = useUriPosition();
     const [city, setCityForm] = useState(initState);
     const {dispatch} = useCities();
@@ -69,6 +70,7 @@ export default function Form() {
         e.preventDefault();
         const newId = Math.trunc(Math.abs(10000 * lat * lng));
         const data = {
+            user: user.email,
             cityName: cityName,
             emoji: emoji,
             country: country,
@@ -88,7 +90,7 @@ export default function Form() {
 
         try {
             await postNewCity(data);
-            dispatch({type: 'city_added', payload: data});
+            dispatch({type: 'city/added', payload: data});
             navigate(`../cities/${newId}?lat=${lat}&lng=${lng}`);
         } catch (err) {
             setCityForm(st => ({...st, errorMessage: err.message }));

@@ -6,10 +6,13 @@ import Spinner from './Spinner';
 
 export default function CityList() {
 
-    const {status, cities, dispatch} = useCities();
+    const {status, cities, errorMessage} = useCities();
 
     if (status === 'loading')
         return <Spinner />
+
+    if (status === 'server_error')
+        return <Message message={errorMessage} />
 
     if (!cities.length)
         return <Message message={
@@ -19,7 +22,7 @@ export default function CityList() {
     return (
         <ul className={styles.cityList}>
             {cities.map((city => (
-                <CityItem city={city} key={city.id} dispatch={dispatch}/>
+                <CityItem city={city} key={city.id}/>
             )))}
         </ul>
     )

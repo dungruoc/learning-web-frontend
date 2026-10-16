@@ -1,88 +1,43 @@
 {
   "cities": [
     {
-      "cityName": "Saint-Laurent-du-Var",
-      "emoji": "🇫🇷",
-      "country": "France",
-      "date": "2026-10-15T16:38:31.623Z",
-      "notes": "",
-      "position": {
-        "lat": "43.667871610117494",
-        "lng": "7.189865112304688"
-      },
-      "id": 3139661
-    },
-    {
-      "cityName": "Hanoi",
+      "user": "test1@example.com",
+      "cityName": "Tu Liem",
       "emoji": "🇻🇳",
       "country": "Viet Nam",
-      "date": "2026-10-15T16:38:31.623Z",
+      "date": "2026-10-16T08:10:11.803Z",
       "notes": "",
       "position": {
-        "lat": "21.02682813712425",
-        "lng": "105.85327148437501"
+        "lat": "21.03403835225385",
+        "lng": "105.76194763183594"
       },
-      "id": 22257585
+      "id": 22246008
     },
     {
-      "cityName": "Nice",
-      "emoji": "🇫🇷",
-      "country": "France",
-      "date": "2026-10-15T16:38:31.623Z",
-      "notes": "",
-      "position": {
-        "lat": "43.700644071512485",
-        "lng": "7.271575927734375"
-      },
-      "id": 3177725
-    },
-    {
-      "cityName": "Monaco",
-      "emoji": "🇲🇨",
-      "country": "Monaco",
-      "date": "2026-10-15T16:38:31.623Z",
-      "notes": "",
-      "position": {
-        "lat": "43.72942933300513",
-        "lng": "7.417144775390626"
-      },
-      "id": 3243475
-    },
-    {
-      "cityName": "Phuong Bai Chay",
+      "user": "test1@example.com",
+      "cityName": "Thanh Sen",
       "emoji": "🇻🇳",
       "country": "Viet Nam",
-      "date": "2026-10-15T16:38:31.623Z",
+      "date": "2026-10-16T08:10:11.803Z",
       "notes": "",
       "position": {
-        "lat": "20.951580773591807",
-        "lng": "107.04640388488771"
+        "lat": "18.339881725989738",
+        "lng": "105.9051561355591"
       },
-      "id": 22427913
+      "id": 19422880
     },
     {
-      "cityName": "Haiphong",
+      "user": "test2@example.com",
+      "cityName": "Tu Liem",
       "emoji": "🇻🇳",
       "country": "Viet Nam",
-      "date": "2026-10-15T16:38:31.623Z",
+      "date": "2026-10-16T15:21:03.522Z",
       "notes": "",
       "position": {
-        "lat": "20.86635090978079",
-        "lng": "106.69097900390626"
+        "lat": "21.032436112373468",
+        "lng": "105.76383590698244"
       },
-      "id": 22262514
-    },
-    {
-      "cityName": "Tokyo",
-      "emoji": "🇯🇵",
-      "country": "Japan",
-      "date": "2026-10-15T16:38:31.623Z",
-      "notes": "",
-      "position": {
-        "lat": "35.67514743608467",
-        "lng": "139.79003906250003"
-      },
-      "id": 49870302
+      "id": 22244711
     }
   ]
 }

@@ -4,24 +4,36 @@ import styles from './CityItem.module.css';
 import { useCities } from '../contexts/CitiesContext';
 import { useState } from 'react';
 import Spinner from './Spinner';
+import Message from './Message';
 
 
-export default function CityItem({city, dispatch}) {
+export default function CityItem({city}) {
     const [isLoading, setIsLoading] = useState(false);
-    const {currentCityId} = useCities();
+    const [errorMessage, setErrorMessage] = useState("");
+    const {currentCityId, dispatch} = useCities();
     const {cityName, emoji, date, id, position: {lat, lng}} = city;
     const isCurrent = (Number(currentCityId) === Number(id));
 
     async function handleDeleteCity(e) {
         e.preventDefault();
         setIsLoading(true);
-        await deleteCity(city.id);
-        setIsLoading(false);
-        dispatch({type: 'delete_city', payload: id})
+        try {
+            await deleteCity(city.id);
+            dispatch({type: 'city/deleted', payload: id})
+        } catch (err) {
+            console.error(err.message);
+            setErrorMessage("Something wrong. Cannot delete on server.");
+        } finally {
+            setIsLoading(false);
+
+        }
     }
 
     if (isLoading)
         return <Spinner />;
+
+    if (errorMessage.length)
+        return <Message message={errorMessage} />;
 
     return (
         <li>

@@ -36,6 +36,8 @@ function useMapPosition() {
 
     return {mapPosition, getGeoPosition, isGeoLoading};
 }
+
+
 export default function Map() {
     const {cities} = useCities();
     const {mapPosition, getGeoPosition, isGeoLoading} = useMapPosition();

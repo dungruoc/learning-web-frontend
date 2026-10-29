@@ -45,12 +45,14 @@ export default function CitiesProvider({children}) {
 
     useEffect(() => {
         const fetchData = async function(user) {
-          dispatch({type: 'cities/fetching'});
-          try {
-              const cities = await fetchCities(user.email);
-              dispatch({type: 'cities/fetched', payload: cities});
-          } catch (err) {
-              dispatch({type: 'error', payload: err.message});
+          if (user) {
+            dispatch({type: 'cities/fetching'});
+            try {
+                const cities = await fetchCities(user.email);
+                dispatch({type: 'cities/fetched', payload: cities});
+            } catch (err) {
+                dispatch({type: 'error', payload: err.message});
+            }
           }
         }
 

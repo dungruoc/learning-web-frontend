@@ -54,11 +54,8 @@ export function useMovies(searchQuery, preSearchCallback, preSearchCallbackParam
                 }
             }
         }
-        try {
-            handleSearch(searchQuery);
-        } catch (err) {
-            setErrorMessage(err.message);
-        }
+
+        handleSearch(searchQuery);
     }, [searchQuery, preSearchCallback, preSearchCallbackParam]);
     
     return {movieList, isSearching, errorMessage};

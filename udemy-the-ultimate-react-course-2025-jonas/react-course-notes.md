@@ -37,3 +37,12 @@
 # How React works
 
 ![How React works](./images/how-react-works.png)
+
+# Redux and Modern redux toolkits
+
+![useReducer Hook](images/reducer-hook.png)
+![Redux Mechanism](images/redux-mechanism.png)
+
+## Redux Middleware
+
+![Redux Middleware](images/redux-middleware.png)

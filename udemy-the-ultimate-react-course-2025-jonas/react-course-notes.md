@@ -46,3 +46,8 @@
 ## Redux Middleware
 
 ![Redux Middleware](images/redux-middleware.png)
+
+# Tailwind CSS
+
+> Utility-first CSS approach: writing tiny classes with ONE single purpose, then combining them to build entire layouts
+
